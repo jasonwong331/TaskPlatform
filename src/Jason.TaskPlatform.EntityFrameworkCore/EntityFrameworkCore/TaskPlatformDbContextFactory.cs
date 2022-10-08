@@ -17,7 +17,7 @@ public class TaskPlatformDbContextFactory : IDesignTimeDbContextFactory<TaskPlat
         var configuration = BuildConfiguration();
 
         var builder = new DbContextOptionsBuilder<TaskPlatformDbContext>()
-            .UseSqlServer(configuration.GetConnectionString("Default"));
+          .UseMySql(configuration.GetConnectionString("Default"), MySqlServerVersion.LatestSupportedServerVersion);
 
         return new TaskPlatformDbContext(builder.Options);
     }
