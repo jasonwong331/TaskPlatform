@@ -32,7 +32,7 @@ namespace Jason.TaskPlatform;
 [DependsOn(
     typeof(TaskPlatformHttpApiModule),
     typeof(AbpAutofacModule),
-    typeof(AbpCachingStackExchangeRedisModule),
+    //typeof(AbpCachingStackExchangeRedisModule),
     typeof(AbpAspNetCoreMvcUiMultiTenancyModule),
     typeof(TaskPlatformApplicationModule),
     typeof(TaskPlatformEntityFrameworkCoreModule),
@@ -154,8 +154,8 @@ public class TaskPlatformHttpApiHostModule : AbpModule
         var dataProtectionBuilder = context.Services.AddDataProtection().SetApplicationName("TaskPlatform");
         if (!hostingEnvironment.IsDevelopment())
         {
-            var redis = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
-            dataProtectionBuilder.PersistKeysToStackExchangeRedis(redis, "TaskPlatform-Protection-Keys");
+            //var redis = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
+            //dataProtectionBuilder.PersistKeysToStackExchangeRedis(redis, "TaskPlatform-Protection-Keys");
         }
     }
 
